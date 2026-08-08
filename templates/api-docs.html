@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API文档 - PromptOpt</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 32px; margin-bottom: 8px; background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #64748b; margin-bottom: 32px; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        h2 { font-size: 20px; margin-bottom: 16px; color: #1e293b; }
+        h3 { font-size: 16px; margin: 16px 0 8px; color: #334155; }
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "Consolas", monospace;
+            font-size: 13px;
+            color: #4f46e5;
+        }
+        pre {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 16px;
+            border-radius: 10px;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 8px 0 16px;
+        }
+        table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        th { background: #f8fafc; font-weight: 600; color: #475569; }
+        .method { display: inline-block; padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 13px; margin-right: 10px; }
+        .method.post { background: #dcfce7; color: #166534; }
+        .method.get { background: #dbeafe; color: #1e40af; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PromptOpt API 文档</h1>
+        <p class="subtitle">AI提示词优化服务接口说明 · 基础地址：<code>{SITE_URL}</code></p>
+
+        <div class="card">
+            <h2>📌 接口概览</h2>
+            <p>所有接口返回统一 JSON 格式：<code>{"code": 状态码, "msg": 消息, "data": 数据}</code></p>
+            <p>code=0 表示成功，非0表示失败。</p>
+        </div>
+
+        <div class="card">
+            <h2>🔧 提示词优化接口</h2>
+            <p><span class="method post">POST</span><code>/optimize</code></p>
+            <h3>请求参数</h3>
+            <table>
+                <tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr>
+                <tr><td>prompt</td><td>string</td><td>是</td><td>待优化的原始提示词，1-2000字符</td></tr>
+                <tr><td>style</td><td>string</td><td>否</td><td>优化风格：precise(精准)/creative(创意)/concise(简洁)，默认precise</td></tr>
+            </table>
+            <h3>返回示例</h3>
+            <pre>{
+    "code": 0,
+    "msg": "success",
+    "data": {
+        "optimized_prompt": "优化后的提示词内容..."
+    }
+}</pre>
+            <h3>cURL 调用示例</h3>
+            <pre>curl -X POST {SITE_URL}/optimize \\
+  -H "Content-Type: application/json" \\
+  -d '{"prompt": "写一篇文章", "style": "precise"}'</pre>
+            <h3>Python 调用示例</h3>
+            <pre>import requests
+
+url = "{SITE_URL}/optimize"
+data = {"prompt": "写一篇文章", "style": "precise"}
+res = requests.post(url, json=data)
+print(res.json())</pre>
+        </div>
+
+        <div class="card">
+            <h2>🎟️ 兑换码验证接口</h2>
+            <p><span class="method post">POST</span><code>/verify_code</code></p>
+            <h3>请求参数</h3>
+            <table>
+                <tr><th>字段</th><th>类型</th><th>必填</th><th>说明</th></tr>
+                <tr><td>code</td><td>string</td><td>是</td><td>兑换码</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>⚠️ 错误码说明</h2>
+            <table>
+                <tr><th>code</th><th>说明</th></tr>
+                <tr><td>0</td><td>成功</td></tr>
+                <tr><td>-1</td><td>通用业务错误（参数错误、AI服务异常等）</td></tr>
+                <tr><td>-2</td><td>请求过于频繁，触发限流</td></tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>📌 备注</h2>
+            <ul style="padding-left: 20px; color: #475569; font-size: 14px;">
+                <li>单IP限流：每分钟最多20次请求</li>
+                <li>接口超时时间：15秒</li>
+                <li>所有接口支持跨域调用</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

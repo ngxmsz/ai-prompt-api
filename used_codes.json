@@ -1,0 +1,29 @@
+{
+  "ZGhzOEV1SUVVdmIzSzl4bkpPcjlPQXwxNzg2MTg0NDY5fDE3ODYxODQ0Njl8NTg0MDg5MWU5MjVhZWI3Yg": {
+    "order_id": "420000123456789012345678",
+    "client_ip": "127.0.0.1",
+    "device_fingerprint": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.019201080",
+    "used": false,
+    "claimed_date": "2026-08-08",
+    "created_at": "2026-08-08T18:21:09.071044",
+    "expires_at": 1786270869.071044
+  },
+  "0Y5XXUEcwbB2V1i0ONnLX9xE": {
+    "order_id": "420000123456789012345679",
+    "client_ip": "127.0.0.1",
+    "device_fingerprint": "test",
+    "used": false,
+    "claimed_date": "2026-08-08",
+    "created_at": "2026-08-08T18:47:02.419405",
+    "expires_at": 1786272422.419405
+  },
+  "fInrRLvmIMODPI6eVzXP8dYi": {
+    "order_id": "420000123456789012341212",
+    "client_ip": "127.0.0.1",
+    "device_fingerprint": "1930983553",
+    "used": false,
+    "claimed_date": "2026-08-08",
+    "created_at": "2026-08-08T18:57:05.889588",
+    "expires_at": 1786273025.889588
+  }
+}

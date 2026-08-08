@@ -1,0 +1,33 @@
+# 环境变量与密钥
+.env
+
+# Python缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 虚拟环境
+venv/
+.venv/
+env/
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 日志
+*.log
+
+# 打包产物
+*.zip
+*.rar
+*.exe
+dist/
+build/
+
+# 系统文件
+.DS_Store
+Thumbs.db
